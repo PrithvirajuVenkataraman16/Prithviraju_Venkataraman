@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Management</title>
+    <style>
+        body {
+            background-color: #ffffff; 
+            color: #333333; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #ff4500; 
+            text-align: center; 
+            margin: 20px 0; 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px; 
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left; 
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333333;
+        }
+        .btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 5px; 
+        }
+        .btn-primary {
+            background-color: #007bff; 
+            color: white;
+        }
+        .btn-info {
+            background-color: #17a2b8; 
+            color: white;
+        }
+        .btn-danger {
+            background-color: #dc3545; 
+            color: white;
+        }
+        a {
+            color: #1e90ff; 
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            clear: both; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Contact Management</h1>
+    <a href="{% url 'create_contact' %}" class="btn btn-primary">Create a New Contact</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+            <tr>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>
+                    <a href="{% url 'contact_detail' contact.id %}" class="btn btn-info">View</a>
+                    <a href="{% url 'contact_edit' contact.id %}" class="btn btn-primary">Edit</a>
+                    <a href="{% url 'contact_delete' contact.id %}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <hr>
+        <p>(c)Created by Prithviraju Venkataraman</p>
+    </div>
+</body>
+</html>

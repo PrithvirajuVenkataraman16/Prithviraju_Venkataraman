@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Contact</title>
+    <style>
+        body {
+            background-color: #ffffff; 
+            color: #333333; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; 
+        }
+        h1 {
+            color: #ff4500; 
+            margin-top: 20px; 
+        }
+        
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px; 
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Edit Contact</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+    <a href="{% url 'contact_detail' contact.id %}">Cancel</a>
+
+    <div class="footer">
+        <hr>
+        <p>(c)Created by Prithviraju Venkataraman</p>
+    </div>
+</body>
+</html>

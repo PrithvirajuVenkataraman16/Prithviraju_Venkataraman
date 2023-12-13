@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Contact</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center; 
+        }
+        h1 {
+            color: #ff4500;
+            margin: 20px 0; 
+        }
+        p {
+            color: #2e8b57;
+            margin: 5px 0; 
+        }
+        .btn {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: inline-block; 
+            margin: 0.5em 0;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px; 
+            font-size: 14px;
+            clear: both;
+            width: 100%;
+        }
+        hr {
+            margin-top: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Delete Contact</h1>
+    <p>Are you sure you want to delete the contact "{{ contact.name }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <a href="{% url 'contact_detail' contact.id %}">Cancel</a>
+
+    <div class="footer">
+        <hr>
+        <p>(c)Created by Prithviraju Venkataraman</p>
+    </div>
+</body>
+</html>
